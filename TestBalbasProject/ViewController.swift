@@ -34,10 +34,12 @@ class ViewController: UIViewController {
         let buttonIndex = sender.tag
         print("Button \(buttonIndex) tapped")
         
-        if buttonIndex == 9 {
+        if buttonIndex == 1 {
             displaySwiftUIViewWithPopup()
-        } else if buttonIndex == 10 {
+        } else if buttonIndex == 2 {
             displaySwiftUIView()
+        } else if buttonIndex == 3 {
+            popupViewForSwift()
         }
     }
     
@@ -85,6 +87,14 @@ class ViewController: UIViewController {
         ])
         
         hostingController.didMove(toParent: self)
+    }
+    
+    /// Swiftでポップアップを表示する
+    func popupViewForSwift() {
+        let popupVC = TestPopupSwiftViewController()
+        popupVC.modalPresentationStyle = .fullScreen
+        popupVC.modalTransitionStyle = .crossDissolve
+        self.present(popupVC, animated: true, completion: nil)
     }
 
     // ランダムな UserData を生成する関数

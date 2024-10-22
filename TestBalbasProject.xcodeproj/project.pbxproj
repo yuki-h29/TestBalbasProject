@@ -208,6 +208,9 @@
 			);
 			mainGroup = 238077612CBB56F500D8E20C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				23227C852CC2EF8C00BEA0DA /* XCRemoteSwiftPackageReference "aws-sdk-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2380776B2CBB56F500D8E20C /* Products */;
 			projectDirPath = "";
@@ -569,6 +572,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		23227C852CC2EF8C00BEA0DA /* XCRemoteSwiftPackageReference "aws-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/aws-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.37.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 238077622CBB56F500D8E20C /* Project object */;
 }
