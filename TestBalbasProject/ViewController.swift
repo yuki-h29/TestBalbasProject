@@ -40,10 +40,12 @@ class ViewController: UIViewController {
             displaySwiftUIView()
         } else if buttonIndex == 3 {
             popupViewForSwift()
+        } else if buttonIndex == 4 {
+            goToTestTransitionViewController()
         }
     }
     
-    // ボタン9用のSwiftUIのビューを表示し、ポップアップボタンを含むビューを表示する
+    // SwiftUIのビューを表示し、ポップアップボタンを含むビューを表示する
     func displaySwiftUIViewWithPopup() {
         let swiftUIView = TestPopupSwiftUI()
         let hostingController = UIHostingController(rootView: swiftUIView)
@@ -95,6 +97,14 @@ class ViewController: UIViewController {
         popupVC.modalPresentationStyle = .fullScreen
         popupVC.modalTransitionStyle = .crossDissolve
         self.present(popupVC, animated: true, completion: nil)
+    }
+    
+    /// TestTransitionViewControllerへ遷移する
+    func goToTestTransitionViewController() {
+        let testVC = TestTransitionViewController()
+        let navController = UINavigationController(rootViewController: testVC)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
     }
 
     // ランダムな UserData を生成する関数
