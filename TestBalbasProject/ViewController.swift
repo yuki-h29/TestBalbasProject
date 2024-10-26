@@ -42,6 +42,8 @@ class ViewController: UIViewController {
             popupViewForSwift()
         } else if buttonIndex == 4 {
             goToTestTransitionViewController()
+        } else if buttonIndex == 5 {
+            showPopupButtonTapped()
         }
     }
     
@@ -105,6 +107,29 @@ class ViewController: UIViewController {
         let navController = UINavigationController(rootViewController: testVC)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    /// TestPopupViewへ遷移する
+    func showPopupButtonTapped() {
+        let popup1 = TestPopupView1()
+        popup1.modalPresentationStyle = .overCurrentContext
+        // ■■■クロージャが完了した時に呼ばれる処理
+        popup1.onComplete = { [weak self] in
+            self?.showAlertMessage()
+        }
+        present(popup1, animated: false, completion: nil)
+    }
+    
+    // アラートを表示する関数
+    func showAlertMessage() {
+        // UIAlertControllerを作成
+        let alert = UIAlertController(title: "クロージャ完了", message: "クロージャの処理が完了しました。", preferredStyle: .alert)
+        // OKボタンを作成
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        // アクションをアラートに追加
+        alert.addAction(okAction)
+        // アラートを表示する
+        present(alert, animated: true, completion: nil)
     }
 
     // ランダムな UserData を生成する関数
