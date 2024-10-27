@@ -35,15 +35,23 @@ class ViewController: UIViewController {
         print("Button \(buttonIndex) tapped")
         
         if buttonIndex == 1 {
+            // SwiftUIのビューを表示し、ポップアップボタンを含むビューを表示する
             displaySwiftUIViewWithPopup()
         } else if buttonIndex == 2 {
+            // SwiftUIのビューを表示する
             displaySwiftUIView()
         } else if buttonIndex == 3 {
+            // SwiftでのPopup表示方法(基本)
             popupViewForSwift()
         } else if buttonIndex == 4 {
+            // 画面遷移の種類確認
             goToTestTransitionViewController()
         } else if buttonIndex == 5 {
+            // Popup表示　クロージャを使って順番に閉じる
             showPopupButtonTapped()
+        } else if buttonIndex == 6 {
+            // Popup表示　５の改良版　共通化AnimationTest
+            showPopupButtonTapped2()
         }
     }
     
@@ -112,6 +120,17 @@ class ViewController: UIViewController {
     /// TestPopupViewへ遷移する
     func showPopupButtonTapped() {
         let popup1 = TestPopupView1()
+        popup1.modalPresentationStyle = .overCurrentContext
+        // ■■■クロージャが完了した時に呼ばれる処理
+        popup1.onComplete = { [weak self] in
+            self?.showAlertMessage()
+        }
+        present(popup1, animated: false, completion: nil)
+    }
+    
+    /// TestPopupView2へ遷移する　共通化Animationを使用
+    func showPopupButtonTapped2() {
+        let popup1 = TestPopupView1_()
         popup1.modalPresentationStyle = .overCurrentContext
         // ■■■クロージャが完了した時に呼ばれる処理
         popup1.onComplete = { [weak self] in
